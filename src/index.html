@@ -8,13 +8,72 @@
     <link rel="icon" type="image/png" href="../assets/images/logo.png">
       <!-- Font Awesome -->
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- CSS stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+  
 </head>
 <body>
-    <a href="#" class="navbar-title">Weather App</a>
-    <div class="navbar-nav">
-      <a href="https://github.com/parisa-hr/WeatherApp" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-    </div>
+        <!-- jquery -->
+      <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous">
+      </script>
+      
+
+      <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+      crossorigin="anonymous">
+      </script>
+
+      <!-- Three.js -->
+      <script src="../assets/three.min.js"></script>
+
+      <script src="Detector.js"></script>
+
+  
+      <!-- main.js -->
+  
+      <script src="main.js"></script>
+
+      <script id="vs" type="x-shader/x-vertex" defer>
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        }
+      </script>
+    
+      <script id="fs" type="x-shader/x-fragment"6 defer>
+        uniform sampler2D map;
+        uniform vec3 fogColor;
+        uniform float fogNear;
+        uniform float fogFar;
+    
+        varying vec2 vUv;
+        void main() {
+    
+          float depth = gl_FragCoord.z / gl_FragCoord.w;
+          float fogFactor = smoothstep( fogNear, fogFar, depth );
+    
+          gl_FragColor = texture2D( map, vUv );
+          gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
+          gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+        }
+      </script>
+      <div id="clouds">
+        <a href="#" class="navbar-title">Weather App</a>
+        <div class="navbar-nav">
+          <a href="https://github.com/parisa-hr/WeatherApp" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+        </div>
+       </div>
+
+
 </body>
 </html>
