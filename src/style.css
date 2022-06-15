@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700;800;900&family=Josefin+Sans:ital,wght@1,300&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    
   }
   
   html,
@@ -9,6 +12,45 @@
     position: relative;
   }
   
+  /* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.navbar-title
+{
+  position: absolute;
+  z-index: 10;
+  text-decoration: none;
+  color: var(--color);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  width: 120px;
+  position: relative;
+
+}
+
+.navbar-nav i {
+  color: var(--color);
+  z-index: 11;
+
+}
+
+#icon {
+  margin-right: 1rem;
+  margin-top: 5px;
+  z-index: 11;
+
+}
 
 #clouds canvas {
     position: fixed;
@@ -18,3 +60,4 @@
     background-color:#4584b4;
 
 }
+
